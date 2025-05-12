@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "DANYIA - LinkedIn Commenter",
+    "version": "1.0",
+    "description": "This extension allows you to comment on LinkedIn posts using ChatGPT without api key.",
+    "permissions": [
+      "contextMenus",
+      "scripting",
+      "activeTab",
+      "notifications",
+      "storage",
+      "windows"
+    ],
+    "host_permissions": [
+      "https://chatgpt.com/*",
+      "https://*.linkedin.com/*"
+    ],
+    "content_security_policy": {
+      "extension_pages": "script-src 'self'; object-src 'self'; frame-src https://chatgpt.com/"
+    },
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+    "icons": {
+      "48": "icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+    "action": {
+      "default_title": "DANYIA - LinkedIn Commenter",
+      "default_icon": "icon.png"
+    },
+    "options_page": "options.html"
+  }
+  
